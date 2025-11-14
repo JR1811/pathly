@@ -1,4 +1,133 @@
 {
   "replace": false,
-  "values": []
+  "values": [
+    {
+      "id": "#minecraft:flowers",
+      "required": false
+    },
+    {
+      "id": "twigs:twig",
+      "required": false
+    },
+    {
+      "id": "twigs:pebble",
+      "required": false
+    },
+    {
+      "id": "twigs:opaline_seashell",
+      "required": false
+    },
+    {
+      "id": "twigs:bronzed_seashell",
+      "required": false
+    },
+    {
+      "id": "twigs:roseate_seashell",
+      "required": false
+    },
+    {
+      "id": "twigs:tangerine_seashell",
+      "required": false
+    },
+    {
+      "id": "twigs:bamboo_leaves",
+      "required": false
+    },
+    {
+      "id": "rocks:rock",
+      "required": false
+    },
+    {
+      "id": "rocks:granite_rock",
+      "required": false
+    },
+    {
+      "id": "rocks:diorite_rock",
+      "required": false
+    },
+    {
+      "id": "rocks:andesite_rock",
+      "required": false
+    },
+    {
+      "id": "rocks:sand_rock",
+      "required": false
+    },
+    {
+      "id": "rocks:red_sand_rock",
+      "required": false
+    },
+    {
+      "id": "rocks:gravel_rock",
+      "required": false
+    },
+    {
+      "id": "rocks:end_stone_rock",
+      "required": false
+    },
+    {
+      "id": "rocks:netherrack_rock",
+      "required": false
+    },
+    {
+      "id": "rocks:soul_soil_rock",
+      "required": false
+    },
+    {
+      "id": "rocks:oak_stick",
+      "required": false
+    },
+    {
+      "id": "rocks:spruce_stick",
+      "required": false
+    },
+    {
+      "id": "rocks:birch_stick",
+      "required": false
+    },
+    {
+      "id": "rocks:acacia_stick",
+      "required": false
+    },
+    {
+      "id": "rocks:jungle_stick",
+      "required": false
+    },
+    {
+      "id": "rocks:dark_oak_stick",
+      "required": false
+    },
+    {
+      "id": "rocks:mangrove_stick",
+      "required": false
+    },
+    {
+      "id": "rocks:cherry_stick",
+      "required": false
+    },
+    {
+      "id": "rocks:bamboo_stick",
+      "required": false
+    },
+    {
+      "id": "rocks:crimson_stick",
+      "required": false
+    },
+    {
+      "id": "rocks:warped_stick",
+      "required": false
+    },
+    {
+      "id": "rocks:pinecone",
+      "required": false
+    },
+    {
+      "id": "rocks:seashell",
+      "required": false
+    },
+    {
+      "id": "rocks:starfish",
+      "required": false
+    }
+  ]
 }

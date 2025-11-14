@@ -12,6 +12,9 @@ public class Pathly implements ModInitializer {
 	public static final String MOD_ID = "pathly";
 	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
+	public static final String COMPAT_MOD_ID_THIS_ROCKS = "rocks";
+	public static final String COMPAT_MOD_ID_TWIGS = "twigs";
+
 	@Override
 	public void onInitialize() {
 		PathlyGamerules.initialize();

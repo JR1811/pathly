@@ -13,6 +13,7 @@ import net.minecraft.item.ToolMaterial;
 import net.minecraft.registry.tag.TagKey;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.shirojr.pathly.init.PathlyGamerules;
 import net.shirojr.pathly.init.PathlyTags;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,7 +24,9 @@ import java.util.Map;
 
 @Mixin(ShovelItem.class)
 public abstract class ShovelItemMixin extends MiningToolItem {
-    @Shadow @Final protected static Map<Block, BlockState> PATH_STATES;
+    @Shadow
+    @Final
+    protected static Map<Block, BlockState> PATH_STATES;
 
     private ShovelItemMixin(float attackDamage, float attackSpeed, ToolMaterial material, TagKey<Block> effectiveBlocks, Settings settings) {
         super(attackDamage, attackSpeed, material, effectiveBlocks, settings);
@@ -38,12 +41,14 @@ public abstract class ShovelItemMixin extends MiningToolItem {
         BlockPos originalPos = pos.get();
         BlockState originalPathState = PATH_STATES.get(originalState.getBlock());
         if (originalPathState != null) return originalPathState;
+        if (!context.getWorld().getGameRules().getBoolean(PathlyGamerules.ENABLE_PATH_TOP_REPLACABLES)) return null;
         World world = context.getWorld();
         BlockPos posBelow = originalPos.down();
         BlockState stateBelow = world.getBlockState(posBelow);
         BlockState pathStateBelow = PATH_STATES.get(stateBelow.getBlock());
         if (pathStateBelow == null) return null;
-        if (!originalState.isReplaceable() && !originalState.isIn(PathlyTags.BlockTags.PATH_TOP_REPLACABLES)) return null;
+        if (!originalState.isReplaceable() && !originalState.isIn(PathlyTags.BlockTags.PATH_TOP_REPLACABLES))
+            return null;
         world.breakBlock(originalPos, true, context.getPlayer());
         pos.set(posBelow);
         state.set(stateBelow);
