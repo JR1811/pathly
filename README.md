@@ -17,7 +17,7 @@ This makes path-making feel much more natural—no more needing to clear vegetat
 
 ## 🔧 Configuration
 
-- Additional replaceable blocks can be specified with the newly added [\"pathly:path_top_replacables\"](src/main/generated/data/pathly/tags/blocks/path_top_replacables.json) block tag
+- Additional replaceable blocks can be specified with the newly added [pathly:path_top_replacables](src/main/generated/data/pathly/tags/blocks/path_top_replacables.json) block tag
 - Using the `"enablePathTopReplacables"` Gamerule, the replaceable feature can be enabled and disabled
 
 <div style="text-align: center;">
