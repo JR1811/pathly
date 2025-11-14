@@ -28,9 +28,10 @@ public abstract class ShovelItemMixin extends MiningToolItem {
     @Final
     protected static Map<Block, BlockState> PATH_STATES;
 
-    private ShovelItemMixin(float attackDamage, float attackSpeed, ToolMaterial material, TagKey<Block> effectiveBlocks, Settings settings) {
-        super(attackDamage, attackSpeed, material, effectiveBlocks, settings);
+    private ShovelItemMixin(ToolMaterial material, TagKey<Block> effectiveBlocks, Settings settings) {
+        super(material, effectiveBlocks, settings);
     }
+
 
     @WrapOperation(method = "useOnBlock", at = @At(value = "INVOKE", target = "Ljava/util/Map;get(Ljava/lang/Object;)Ljava/lang/Object;"))
     private Object forwardPathMakingDown(Map<Block, BlockState> instance, Object o, Operation<Object> original,
