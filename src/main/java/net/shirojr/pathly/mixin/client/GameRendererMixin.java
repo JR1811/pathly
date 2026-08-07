@@ -13,7 +13,9 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.RaycastContext;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
+import net.shirojr.pathly.init.PathlyGamerules;
 import net.shirojr.pathly.init.PathlyTags;
+import net.shirojr.pathly.network.GameRuleCache;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -26,11 +28,14 @@ public abstract class GameRendererMixin implements AutoCloseable {
         if (!(instance instanceof LivingEntity livingEntity)) {
             return originalCall;
         }
+        World world = livingEntity.getWorld();
+        if (!GameRuleCache.get(PathlyGamerules.MELEE_HITS_THROUGH_BLOCKS, world)) {
+            return originalCall;
+        }
         if (!livingEntity.getMainHandStack().isIn(PathlyTags.ItemTags.MODIFIED_RAYCAST)) {
             return originalCall;
         }
         if (!(originalCall instanceof BlockHitResult blockHitResult)) return originalCall;
-        World world = livingEntity.getWorld();
         BlockPos targetPos = blockHitResult.getBlockPos();
         if (!canPassThroughBlock(world, targetPos)) return originalCall;
         return recastRaycast(livingEntity, blockHitResult, maxDistance, tickDelta, includeFluids);
@@ -44,7 +49,8 @@ public abstract class GameRendererMixin implements AutoCloseable {
     }
 
     @Unique
-    private static HitResult recastRaycast(Entity entity, BlockHitResult firstHit, double maxDistance, float tickDelta, boolean includeFluids) {
+    private static HitResult recastRaycast(Entity entity, BlockHitResult firstHit, double maxDistance,
+                                           float tickDelta, boolean includeFluids) {
         Vec3d cameraPos = entity.getCameraPosVec(tickDelta);
         double consumedDistance = cameraPos.distanceTo(firstHit.getPos());
         double remainingDistance = maxDistance - consumedDistance;

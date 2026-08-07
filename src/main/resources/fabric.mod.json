@@ -18,6 +18,9 @@
 		"main": [
 			"net.shirojr.pathly.Pathly"
 		],
+		"client": [
+			"net.shirojr.pathly.PathlyClient"
+		],
 		"fabric-datagen": [
 			"net.shirojr.pathly.PathlyDataGenerator"
 		]

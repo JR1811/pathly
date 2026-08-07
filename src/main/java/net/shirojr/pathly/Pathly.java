@@ -3,6 +3,7 @@ package net.shirojr.pathly;
 import net.fabricmc.api.ModInitializer;
 
 import net.minecraft.util.Identifier;
+import net.shirojr.pathly.init.PathlyEvents;
 import net.shirojr.pathly.init.PathlyGamerules;
 import net.shirojr.pathly.init.PathlyTags;
 import org.slf4j.Logger;
@@ -19,6 +20,7 @@ public class Pathly implements ModInitializer {
 	public void onInitialize() {
 		PathlyGamerules.initialize();
 		PathlyTags.initialize();
+		PathlyEvents.initializeCommon();
 
 		LOGGER.info("There are no wrong turns, only unexpected paths - Mark Nepo");
 	}

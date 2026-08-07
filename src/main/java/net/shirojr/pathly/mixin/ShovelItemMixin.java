@@ -16,6 +16,7 @@ import net.minecraft.util.math.Direction;
 import net.minecraft.world.World;
 import net.shirojr.pathly.init.PathlyGamerules;
 import net.shirojr.pathly.init.PathlyTags;
+import net.shirojr.pathly.network.GameRuleCache;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -28,9 +29,6 @@ import java.util.Map;
 
 @Mixin(ShovelItem.class)
 public abstract class ShovelItemMixin extends MiningToolItem {
-    @Unique
-    private static final int PATH_TOP_REPLACEABLE_SCAN_DEPTH = 3;
-
     @Shadow
     @Final
     protected static Map<Block, BlockState> PATH_STATES;
@@ -51,7 +49,7 @@ public abstract class ShovelItemMixin extends MiningToolItem {
         BlockPos.Mutable posWalker = pos.get().mutableCopy();
         List<BlockPos> toBeBroken = new ArrayList<>();
 
-        for (int i = 0; i < PATH_TOP_REPLACEABLE_SCAN_DEPTH; i++) {
+        for (int i = 0; i < GameRuleCache.get(PathlyGamerules.PATH_TOP_REPLACABLES_SCAN_DEPTH, world); i++) {
             BlockState blockState = world.getBlockState(posWalker);
             BlockState pathState = PATH_STATES.get(blockState.getBlock());
             if (pathState != null) {
@@ -68,7 +66,6 @@ public abstract class ShovelItemMixin extends MiningToolItem {
             toBeBroken.add(posWalker.toImmutable());
             posWalker.move(Direction.DOWN);
         }
-
         return null;
     }
 
