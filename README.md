@@ -14,7 +14,7 @@ In addition, sword and axe items will avoid hitting foliage.
 ## Features
 
 - Automatically shifts the shovel’s path-creation check downward when the aimed block is replaceable.
-- Fully vanilla-friendly behavior—does not change the properties of any block.
+- Fully vanilla-friendly behavior. Does not change the properties of any block.
 - Works with any Shovel Item
 - Swords and Axes will ignore foliage from being targetable, helping out players when fighting
 
