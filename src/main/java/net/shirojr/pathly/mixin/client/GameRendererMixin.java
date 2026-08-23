@@ -44,8 +44,7 @@ public abstract class GameRendererMixin implements AutoCloseable {
     @Unique
     private static boolean canPassThroughBlock(WorldView world, BlockPos pos) {
         BlockState state = world.getBlockState(pos);
-        if (state.isIn(PathlyTags.BlockTags.RAYCAST_PASS_THROUGH)) return true;
-        else return state.getCollisionShape(world, pos).isEmpty();
+        return state.isIn(PathlyTags.BlockTags.RAYCAST_PASS_THROUGH);
     }
 
     @Unique

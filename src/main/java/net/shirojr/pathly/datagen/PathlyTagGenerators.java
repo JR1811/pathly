@@ -33,7 +33,10 @@ public class PathlyTagGenerators {
 
         @Override
         protected void configure(RegistryWrapper.WrapperLookup wrapperLookup) {
-            getOrCreateTagBuilder(PathlyTags.BlockTags.RAYCAST_PASS_THROUGH);
+            getOrCreateTagBuilder(PathlyTags.BlockTags.RAYCAST_PASS_THROUGH)
+                    .addOptionalTag(BlockTags.FLOWERS)
+                    .addOptionalTag(BlockTags.REPLACEABLE_BY_TREES)
+                    .addOptionalTag(BlockTags.REPLACEABLE);
 
             getOrCreateTagBuilder(PathlyTags.BlockTags.PATH_TOP_REPLACABLES)
                     .addOptionalTag(BlockTags.FLOWERS)
